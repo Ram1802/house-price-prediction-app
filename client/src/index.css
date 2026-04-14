@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* =========================
-   SAFE GLOBAL RESET
+   GLOBAL RESET
 ========================= */
 * {
   margin: 30;
@@ -9,6 +9,9 @@
   box-sizing: border-box;
 }
 
+/* =========================
+   ROOT / BODY
+========================= */
 html,
 body,
 #root {
@@ -19,12 +22,34 @@ body,
 
 body {
   font-family: "Inter", "Poppins", sans-serif;
-  background: linear-gradient(135deg, #0f172a 0%, #111827 50%, #1e293b 100%);
+  background: linear-gradient(135deg, #020617 0%, #0f172a 50%, #111827 100%);
   color: #e2e8f0;
   overflow-x: hidden;
 }
 
-/* Scrollbar */
+/* =========================
+   ROOT WRAPPER
+========================= */
+#root {
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* =========================
+   APP BACKGROUND
+========================= */
+.app-bg {
+  min-height: 100vh;
+  width: 100%;
+  background:
+    radial-gradient(circle at top left, rgba(59, 130, 246, 0.12), transparent 28%),
+    radial-gradient(circle at top right, rgba(139, 92, 246, 0.12), transparent 26%),
+    linear-gradient(135deg, #0f172a 0%, #111827 50%, #1e293b 100%);
+}
+
+/* =========================
+   SCROLLBAR
+========================= */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -38,35 +63,23 @@ body {
   border-radius: 999px;
 }
 
-/* Selection */
+/* =========================
+   TEXT SELECTION
+========================= */
 ::selection {
   background: rgba(59, 130, 246, 0.25);
   color: white;
 }
 
-#root {
-  min-height: 100vh;
-  width: 100%;
-}
-
-/* Background wrapper */
-.app-bg {
-  min-height: 100vh;
-  width: 100%;
-  background:
-    radial-gradient(circle at top left, rgba(59, 130, 246, 0.12), transparent 28%),
-    radial-gradient(circle at top right, rgba(139, 92, 246, 0.12), transparent 26%),
-    linear-gradient(135deg, #0f172a 0%, #111827 50%, #1e293b 100%);
-}
-
-/* Premium cards */
+/* =========================
+   GLASS CARD
+========================= */
 .glass-card {
-  background: rgba(15, 23, 42, 0.75);
-  border: 1px solid rgba(148, 163, 184, 0.15);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-radius: 24px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
   transition: all 0.3s ease;
 }
 
@@ -76,7 +89,9 @@ body {
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
 }
 
-/* Gradient title */
+/* =========================
+   GRADIENT TITLE
+========================= */
 .gradient-title {
   background: linear-gradient(135deg, #ffffff, #93c5fd, #c4b5fd);
   background-clip: text;
@@ -85,18 +100,9 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
-/* Welcome */
-.welcome-text {
-  color: #ffffff;
-  font-weight: 700;
-  font-size: 1.35rem;
-}
-
-.soft-text {
-  color: #94a3b8;
-}
-
-/* Buttons */
+/* =========================
+   PREMIUM BUTTON
+========================= */
 .btn-premium {
   background: linear-gradient(135deg, #2563eb, #7c3aed);
   color: white;
@@ -114,58 +120,52 @@ body {
   box-shadow: 0 14px 30px rgba(59, 130, 246, 0.3);
 }
 
-.btn-gold {
-  background: linear-gradient(135deg, #f59e0b, #eab308);
-  color: white;
-  border-radius: 14px;
-  padding: 12px 20px;
-  font-weight: 600;
-  border: none;
-  transition: all 0.25s ease;
-  cursor: pointer;
+/* =========================
+   FORM ELEMENTS
+========================= */
+input,
+button,
+textarea,
+select {
+  font-family: inherit;
 }
 
-.btn-gold:hover {
-  transform: translateY(-2px);
-  opacity: 0.95;
+/* =========================
+   WELCOME TEXT
+========================= */
+.welcome-text {
+  font-size: 1.05rem;
 }
 
-/* Inputs */
-.input-premium {
-  width: 100%;
-  padding: 14px 16px;
-  border-radius: 16px;
-  border: 1px solid rgba(148, 163, 184, 0.15);
-  background: rgba(30, 41, 59, 0.92);
-  color: #ffffff;
-  outline: none;
-  font-size: 15px;
-  transition: all 0.25s ease;
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  .glass-card {
+    border-radius: 18px;
+  }
+
+  .welcome-text {
+    font-size: 0.95rem;
+  }
+}
+/* Glow Effects */
+.glow-border {
+  position: relative;
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.06),
+              0 10px 30px rgba(59, 130, 246, 0.12);
 }
 
-.input-premium::placeholder {
-  color: #94a3b8;
+.glow-text {
+  text-shadow: 0 0 18px rgba(96, 165, 250, 0.35);
 }
 
-.input-premium:focus {
-  border-color: rgba(96, 165, 250, 0.7);
-  box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.15);
+/* Smooth animations */
+.fade-up {
+  animation: fadeUp 0.7s ease forwards;
 }
 
-/* Upload box */
-.upload-box {
-  border: 2px dashed rgba(148, 163, 184, 0.25);
-  background: rgba(15, 23, 42, 0.45);
-  border-radius: 20px;
-  transition: all 0.25s ease;
-}
-
-.upload-box:hover {
-  border-color: rgba(96, 165, 250, 0.45);
-  background: rgba(30, 41, 59, 0.55);
-}
-
-/* Fade animation */
 @keyframes fadeUp {
   from {
     opacity: 0;
@@ -177,16 +177,19 @@ body {
   }
 }
 
-.fade-up {
-  animation: fadeUp 0.8s ease both;
+/* Premium pulse */
+.premium-pulse {
+  animation: premiumPulse 2s infinite;
 }
 
-@media (max-width: 768px) {
-  .glass-card {
-    border-radius: 18px;
+@keyframes premiumPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.35);
   }
-
-  .welcome-text {
-    font-size: 1.05rem;
+  70% {
+    box-shadow: 0 0 0 18px rgba(168, 85, 247, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(168, 85, 247, 0);
   }
 }
